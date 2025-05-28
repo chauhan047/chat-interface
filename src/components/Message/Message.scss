@@ -1,0 +1,98 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.message-container {
+  display: flex;
+  margin-bottom: $spacing-sm;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  &.incoming {
+    align-items: flex-start;
+    
+    .message {
+      background-color: $bg-light;
+      border-radius: $border-radius-lg $border-radius-lg $border-radius-lg 0;
+      margin-right: 15%;
+      box-shadow: $shadow-sm;
+      
+      &.no-avatar {
+        margin-left: 40px;
+      }
+    }
+  }
+  
+  &.outgoing {
+    justify-content: flex-end;
+    
+    .message {
+      background-color: rgba($primary-color, 0.1);
+      border-radius: $border-radius-lg $border-radius-lg 0 $border-radius-lg;
+      margin-left: 15%;
+      box-shadow: $shadow-sm;
+    }
+  }
+  
+  @include slide-in('up', 10px, 200ms);
+}
+
+.avatar-container {
+  margin-right: $spacing-xs;
+  
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+.message {
+  padding: $spacing-sm $spacing-md;
+  max-width: 85%;
+  
+  .sender-name {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    color: $primary-color;
+    margin-bottom: $spacing-xs;
+  }
+  
+  .message-content {
+    p {
+      margin: 0;
+      word-wrap: break-word;
+    }
+  }
+  
+  .message-metadata {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: $spacing-xs;
+    gap: $spacing-xs;
+    
+    .timestamp {
+      font-size: $font-size-xs;
+      color: $text-tertiary;
+    }
+    
+    .status-icon {
+      font-size: 14px;
+      
+      &.sent {
+        color: $text-tertiary;
+      }
+      
+      &.delivered {
+        color: $text-tertiary;
+      }
+      
+      &.read {
+        color: $primary-color;
+      }
+    }
+  }
+}

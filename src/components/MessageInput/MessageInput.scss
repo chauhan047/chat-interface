@@ -1,0 +1,90 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.message-input-container {
+  padding: $spacing-md;
+  display: flex;
+  align-items: center;
+  background-color: $bg-light;
+  border-top: 1px solid rgba($secondary-light, 0.5);
+  position: relative;
+  z-index: 5;
+}
+
+.emoji-button {
+  @include button-reset;
+  color: $text-secondary;
+  margin-right: $spacing-sm;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all $transition-fast;
+  
+  &:hover {
+    background-color: rgba($secondary-light, 0.2);
+    color: $text-primary;
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.input-wrapper {
+  flex: 1;
+  border-radius: $border-radius-full;
+  background-color: rgba($secondary-light, 0.2);
+  padding: $spacing-sm $spacing-md;
+  
+  textarea {
+    width: 100%;
+    border: none;
+    background: transparent;
+    resize: none;
+    font-size: $font-size-md;
+    max-height: 120px;
+    
+    &:focus {
+      outline: none;
+    }
+    
+    &::placeholder {
+      color: $text-tertiary;
+    }
+  }
+}
+
+.send-button {
+  @include button-reset;
+  background-color: $secondary-light;
+  color: $text-light;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: $spacing-sm;
+  transition: all $transition-fast;
+  
+  &.active {
+    background-color: $primary-color;
+    
+    &:hover {
+      background-color: $primary-dark;
+    }
+  }
+  
+  &:disabled {
+    background-color: $secondary-light;
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  &:active:not(:disabled) {
+    transform: scale(0.95);
+  }
+}

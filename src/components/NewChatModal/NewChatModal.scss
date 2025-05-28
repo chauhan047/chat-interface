@@ -1,0 +1,140 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn $transition-fast forwards;
+}
+
+.modal-content {
+  width: 90%;
+  max-width: 480px;
+  background-color: $bg-light;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-lg;
+  overflow: hidden;
+  animation: popIn $transition-normal forwards;
+}
+
+.modal-header {
+  padding: $spacing-md;
+  border-bottom: 1px solid rgba($secondary-light, 0.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  h3 {
+    margin: 0;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+  }
+  
+  .close-button {
+    @include button-reset;
+    color: $text-secondary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-xs;
+    border-radius: 50%;
+    transition: background-color $transition-fast;
+    
+    &:hover {
+      background-color: rgba($secondary-light, 0.2);
+    }
+    
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}
+
+.modal-search {
+  padding: $spacing-md;
+  position: relative;
+  
+  .search-icon {
+    position: absolute;
+    left: $spacing-md + $spacing-xs;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $text-tertiary;
+  }
+  
+  input {
+    width: 100%;
+    padding: $spacing-sm $spacing-lg $spacing-sm ($spacing-lg + $spacing-md);
+    border: 1px solid rgba($secondary-light, 0.5);
+    border-radius: $border-radius-full;
+    font-size: $font-size-md;
+    
+    &:focus {
+      border-color: $primary-color;
+      box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+    }
+  }
+}
+
+.contacts-list {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 0 $spacing-md $spacing-md;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  padding: $spacing-md;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  transition: background-color $transition-fast;
+  
+  &:hover {
+    background-color: rgba($secondary-light, 0.1);
+  }
+  
+  &:active {
+    background-color: rgba($secondary-light, 0.2);
+  }
+  
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: $spacing-md;
+  }
+  
+  .contact-info {
+    h4 {
+      margin: 0;
+      font-size: $font-size-md;
+      font-weight: $font-weight-medium;
+    }
+    
+    .group-label {
+      font-size: $font-size-xs;
+      color: $text-tertiary;
+      background-color: rgba($secondary-light, 0.3);
+      padding: 2px $spacing-xs;
+      border-radius: $border-radius-sm;
+      margin-top: $spacing-xs;
+      display: inline-block;
+    }
+  }
+}
+
+.no-contacts {
+  padding: $spacing-xl 0;
+  text-align: center;
+  color: $text-tertiary;
+}

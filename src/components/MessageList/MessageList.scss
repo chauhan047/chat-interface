@@ -1,0 +1,52 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.message-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  background-color: $bg-secondary;
+}
+
+.message-group {
+  margin-bottom: $spacing-md;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.date-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: $spacing-md 0;
+  
+  span {
+    background-color: rgba($secondary-light, 0.2);
+    color: $text-secondary;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $border-radius-full;
+  }
+}
+
+.empty-messages {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: $text-tertiary;
+  
+  p {
+    margin: $spacing-xs 0;
+    
+    &.hint {
+      font-size: $font-size-sm;
+    }
+  }
+}

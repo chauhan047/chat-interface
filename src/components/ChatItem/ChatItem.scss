@@ -1,0 +1,157 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.chat-item {
+  display: flex;
+  align-items: center;
+  padding: $spacing-md;
+  cursor: pointer;
+  transition: background-color $transition-fast;
+  position: relative;
+  
+  &:hover {
+    background-color: rgba($secondary-light, 0.1);
+    
+    .delete-button {
+      opacity: 1;
+    }
+  }
+  
+  &.active {
+    background-color: rgba($primary-light, 0.1);
+    
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background-color: $primary-color;
+    }
+  }
+  
+  &.unread {
+    .contact-name {
+      font-weight: $font-weight-bold;
+    }
+    
+    .last-message {
+      font-weight: $font-weight-medium;
+      color: $text-primary;
+    }
+  }
+}
+
+.avatar-container {
+  position: relative;
+  margin-right: $spacing-md;
+  
+  .avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .status-indicator {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid $bg-light;
+    
+    &.online {
+      background-color: $success-color;
+    }
+    
+    &.away {
+      background-color: $warning-color;
+    }
+    
+    &.offline {
+      background-color: $secondary-color;
+    }
+  }
+}
+
+.chat-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.chat-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: $spacing-xs;
+}
+
+.contact-name {
+  margin: 0;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  @extend .text-truncate !optional;
+}
+
+.chat-time {
+  font-size: $font-size-xs;
+  color: $text-tertiary;
+  white-space: nowrap;
+  margin-left: $spacing-sm;
+}
+
+.chat-preview {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.last-message {
+  margin: 0;
+  font-size: $font-size-sm;
+  color: $text-secondary;
+  @extend .text-truncate !optional;
+  max-width: 180px;
+  
+  @include tablet {
+    max-width: 150px;
+  }
+}
+
+.unread-badge {
+  min-width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: $primary-color;
+  color: $text-light;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 $spacing-xs;
+}
+
+.delete-button {
+  @include button-reset;
+  opacity: 0;
+  color: $error-color;
+  padding: $spacing-xs;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all $transition-fast;
+  margin-left: $spacing-sm;
+  
+  &:hover {
+    background-color: rgba($error-color, 0.1);
+  }
+  
+  &:active {
+    transform: scale(0.9);
+  }
+}

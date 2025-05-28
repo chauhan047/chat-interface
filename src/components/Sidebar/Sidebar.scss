@@ -1,0 +1,137 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.sidebar {
+  width: 320px;
+  height: 100%;
+  background-color: $bg-light;
+  border-right: 1px solid rgba($secondary-light, 0.5);
+  display: flex;
+  flex-direction: column;
+  transition: width $transition-normal;
+  z-index: 10;
+  
+  @include tablet {
+    width: 280px;
+  }
+  
+  @include mobile {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba($secondary-light, 0.5);
+    flex-shrink: 0;
+    height: auto;
+    
+    &.closed {
+      display: none;
+    }
+  }
+  
+  &.closed {
+    width: 0;
+    overflow: hidden;
+  }
+}
+
+.sidebar-header {
+  padding: $spacing-md;
+  border-bottom: 1px solid rgba($secondary-light, 0.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .user-info {
+    h3 {
+      font-size: $font-size-md;
+      font-weight: $font-weight-medium;
+      margin: 0;
+    }
+    
+    .status {
+      font-size: $font-size-xs;
+      color: $text-tertiary;
+      
+      &.online {
+        color: $success-color;
+      }
+      
+      &.away {
+        color: $warning-color;
+      }
+      
+      &.offline {
+        color: $text-tertiary;
+      }
+    }
+  }
+}
+
+.sidebar-actions {
+  display: flex;
+  gap: $spacing-sm;
+  
+  .action-button {
+    @include button-reset;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $text-secondary;
+    background-color: transparent;
+    transition: all $transition-fast;
+    
+    &:hover {
+      background-color: rgba($secondary-light, 0.2);
+      color: $text-primary;
+    }
+    
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+  
+  .mobile-only {
+    display: none;
+    
+    @include mobile {
+      display: flex;
+    }
+  }
+}
+
+.sidebar-search {
+  padding: $spacing-md;
+  
+  input {
+    width: 100%;
+    padding: $spacing-sm $spacing-md;
+    border: none;
+    border-radius: $border-radius-full;
+    background-color: rgba($secondary-light, 0.2);
+    font-size: $font-size-sm;
+    
+    &:focus {
+      background-color: rgba($secondary-light, 0.3);
+      outline: none;
+    }
+    
+    &::placeholder {
+      color: $text-tertiary;
+    }
+  }
+}

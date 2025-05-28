@@ -1,0 +1,137 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.chat-window {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: $bg-light;
+  position: relative;
+}
+
+.chat-header {
+  padding: $spacing-md;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba($secondary-light, 0.5);
+  background-color: $bg-light;
+  box-shadow: $shadow-sm;
+  z-index: 5;
+  
+  .back-button {
+    @include button-reset;
+    display: none;
+    margin-right: $spacing-sm;
+    color: $text-secondary;
+    padding: $spacing-xs;
+    border-radius: 50%;
+    
+    &:hover {
+      background-color: rgba($secondary-light, 0.2);
+    }
+    
+    &:active {
+      transform: scale(0.95);
+    }
+    
+    @include mobile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  
+  .contact-info {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: $spacing-md;
+    }
+    
+    .contact-details {
+      h3 {
+        margin: 0;
+        font-size: $font-size-md;
+        font-weight: $font-weight-medium;
+      }
+      
+      .status {
+        font-size: $font-size-xs;
+        color: $text-tertiary;
+        
+        &.online {
+          color: $success-color;
+        }
+        
+        &.away {
+          color: $warning-color;
+        }
+        
+        &.offline {
+          color: $text-tertiary;
+        }
+      }
+    }
+  }
+  
+  .header-actions {
+    position: relative;
+    
+    .action-button {
+      @include button-reset;
+      color: $text-secondary;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color $transition-fast;
+      
+      &:hover {
+        background-color: rgba($secondary-light, 0.2);
+        color: $text-primary;
+      }
+      
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+    
+    .options-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: $bg-light;
+      border-radius: $border-radius-md;
+      box-shadow: $shadow-md;
+      min-width: 180px;
+      z-index: 10;
+      overflow: hidden;
+      animation: fadeIn $transition-fast forwards;
+      
+      .option-item {
+        @include button-reset;
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: $spacing-md;
+        transition: background-color $transition-fast;
+        
+        &:hover {
+          background-color: rgba($secondary-light, 0.1);
+        }
+        
+        &:active {
+          background-color: rgba($secondary-light, 0.2);
+        }
+      }
+    }
+  }
+}

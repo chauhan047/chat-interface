@@ -1,0 +1,33 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.chat-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: $spacing-sm 0;
+}
+
+.empty-chat-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  margin-top: $spacing-xl;
+  color: $text-tertiary;
+  
+  svg {
+    margin-bottom: $spacing-md;
+    color: $secondary-color;
+  }
+  
+  p {
+    margin: $spacing-xs 0;
+    text-align: center;
+    
+    &.hint {
+      font-size: $font-size-sm;
+      max-width: 200px;
+    }
+  }
+}
